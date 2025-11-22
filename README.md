@@ -1,65 +1,350 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Nurgo Health - Sistema de Gestión de Salud
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sistema completo de gestión de salud con Laravel 8 (Backend) y React + Vite (Frontend).
 
-## About Laravel
+## 🚀 Tecnologías
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Backend
+- Laravel 8
+- PHP 8.1
+- MySQL/MariaDB
+- Laravel Sanctum (Autenticación API)
+- Composer
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Frontend
+- React 18
+- Vite
+- TailwindCSS 3
+- Axios
+- React Router DOM
+- Framer Motion
+- React Hot Toast
+- React Icons
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 📋 Requisitos Previos
 
-## Learning Laravel
+- PHP 8.1+
+- Composer
+- Node.js 16+
+- MySQL/MariaDB (Laragon recomendado)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🔧 Instalación
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Backend Setup
 
-## Laravel Sponsors
+1. Navegar al directorio del backend:
+```bash
+cd backend
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+2. Instalar dependencias:
+```bash
+composer install
+```
 
-### Premium Partners
+3. Copiar archivo de configuración:
+```bash
+cp .env.example .env
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+4. Configurar la base de datos en `.env`:
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=nurgo_health
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-## Contributing
+5. Generar clave de aplicación:
+```bash
+php artisan key:generate
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+6. Ejecutar migraciones:
+```bash
+php artisan migrate
+```
 
-## Code of Conduct
+7. Ejecutar seeders (opcional - datos de prueba):
+```bash
+php artisan db:seed
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+8. Iniciar servidor:
+```bash
+php artisan serve
+```
 
-## Security Vulnerabilities
+El backend estará disponible en: **http://localhost:8000**
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Frontend Setup
 
-## License
+1. Navegar al directorio del frontend:
+```bash
+cd frontend
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# Nurgo_byCoding
+2. Instalar dependencias:
+```bash
+npm install
+```
+
+3. Configurar variables de entorno (`.env`):
+```env
+VITE_API_URL=http://localhost:8000/api
+```
+
+4. Iniciar servidor de desarrollo:
+```bash
+npm run dev
+```
+
+El frontend estará disponible en: **http://localhost:5173**
+
+## 👥 Usuarios de Prueba (después de seeders)
+
+### Admin
+- Email: admin@nurgo.com
+- Password: password
+
+### Doctores
+- Email: doctor1@nurgo.com / Password: password
+- Email: doctor2@nurgo.com / Password: password
+
+### Pacientes
+- Email: patient1@nurgo.com / Password: password
+- Email: patient2@nurgo.com / Password: password
+
+### Tutores
+- Email: guardian1@nurgo.com / Password: password
+- Email: guardian2@nurgo.com / Password: password
+
+## 🏗️ Estructura del Proyecto
+
+### Backend
+```
+backend/
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/API/
+│   │   │   ├── AuthController.php
+│   │   │   ├── DoctorController.php
+│   │   │   ├── PatientController.php
+│   │   │   ├── AppointmentController.php
+│   │   │   └── ...
+│   │   └── Middleware/
+│   │       └── CheckRole.php
+│   └── Models/
+│       ├── User.php
+│       ├── Doctor.php
+│       ├── Patient.php
+│       ├── Appointment.php
+│       └── ...
+├── database/
+│   ├── migrations/
+│   └── seeders/
+└── routes/
+    └── api.php
+```
+
+### Frontend
+```
+frontend/
+├── src/
+│   ├── components/
+│   │   ├── Layout.jsx
+│   │   ├── Navbar.jsx
+│   │   └── ProtectedRoute.jsx
+│   ├── context/
+│   │   └── AuthContext.jsx
+│   ├── pages/
+│   │   ├── Landing.jsx
+│   │   ├── Login.jsx
+│   │   ├── Register.jsx
+│   │   ├── Dashboard.jsx
+│   │   ├── Admin/
+│   │   │   └── AdminDashboard.jsx
+│   │   ├── Doctor/
+│   │   │   └── DoctorDashboard.jsx
+│   │   ├── Patient/
+│   │   │   └── PatientDashboard.jsx
+│   │   └── Guardian/
+│   │       └── GuardianDashboard.jsx
+│   ├── services/
+│   │   ├── api.js
+│   │   ├── authService.js
+│   │   ├── appointmentService.js
+│   │   └── dataService.js
+│   └── App.jsx
+```
+
+## 🔑 Características Principales
+
+### Autenticación y Autorización
+- Login/Register con validación
+- Protección de rutas por roles
+- Token-based authentication (Laravel Sanctum)
+- Middleware de verificación de roles
+
+### Roles y Permisos
+1. **Admin**: Gestión completa del sistema
+2. **Doctor**: Gestión de citas, pacientes y prescripciones
+3. **Paciente**: Agendar citas, ver historial médico
+4. **Tutor**: Gestionar pacientes a cargo, botón de emergencia
+
+### Funcionalidades
+- ✅ Gestión de citas médicas
+- ✅ Validación de citas (no pasadas, no conflictos)
+- ✅ Sistema de emergencias
+- ✅ Gestión de pacientes y doctores
+- ✅ Prescripciones médicas
+- ✅ Visitas a domicilio
+- ✅ Historial médico
+
+### Validaciones Implementadas
+- No se pueden agendar citas en fechas pasadas
+- No se permiten citas simultáneas del mismo doctor
+- Tutores deben ser mayores de 18 años
+- Validación de datos de registro
+
+## 📱 Dashboards Específicos
+
+### Admin Dashboard
+- Estadísticas generales del sistema
+- Gestión de usuarios (doctores, pacientes, tutores)
+- Monitoreo de emergencias
+- Vista general de citas
+
+### Doctor Dashboard
+- Citas del día
+- Alertas de emergencias activas
+- Gestión de pacientes
+- Prescripciones médicas
+
+### Patient Dashboard
+- Próximas citas
+- Agendar nueva cita
+- Historial médico
+- Recetas activas
+
+### Guardian Dashboard
+- **Botón de emergencia prominente**
+- Pacientes a cargo
+- Gestión de citas
+- Historial de emergencias
+
+## 🎨 Diseño
+
+- **Framework CSS**: TailwindCSS 3
+- **Animaciones**: Framer Motion
+- **Notificaciones**: React Hot Toast
+- **Iconos**: React Icons (Font Awesome)
+- **Tema**: Colores primarios azules, diseño moderno y limpio
+
+## 🔄 API Endpoints
+
+### Autenticación
+- POST `/api/register` - Registro de usuarios
+- POST `/api/login` - Inicio de sesión
+- POST `/api/logout` - Cerrar sesión
+- GET `/api/me` - Usuario actual
+
+### Citas
+- GET `/api/appointments` - Listar citas
+- POST `/api/appointments` - Crear cita
+- GET `/api/appointments/{id}` - Ver cita
+- PUT `/api/appointments/{id}` - Actualizar cita
+- DELETE `/api/appointments/{id}` - Eliminar cita
+- GET `/api/appointments-upcoming` - Citas próximas
+
+### Doctores
+- GET `/api/doctors` - Listar doctores
+- GET `/api/doctors-available` - Doctores disponibles
+- CRUD completo para doctores
+
+### Emergencias
+- GET `/api/emergencies` - Listar emergencias
+- POST `/api/emergencies` - Reportar emergencia
+- GET `/api/emergencies-active` - Emergencias activas
+- PUT `/api/emergencies/{id}` - Actualizar emergencia
+
+## 🔒 Seguridad
+
+- CORS configurado para desarrollo
+- Autenticación con tokens Bearer
+- Middleware de verificación de roles
+- Validación de datos en backend
+- Sanitización de inputs
+
+## 🐛 Troubleshooting
+
+### Error de políticas de ejecución en PowerShell
+Si encuentras errores con npm/npx, usa:
+```powershell
+npm.cmd install
+npm.cmd run dev
+```
+
+### Error de CORS
+Verifica que el backend esté configurado en `config/cors.php`:
+```php
+'allowed_origins' => ['http://localhost:5173'],
+'supports_credentials' => true,
+```
+
+### Error de conexión a base de datos
+Asegúrate de que MySQL/MariaDB esté corriendo y las credenciales en `.env` sean correctas.
+
+## 📝 Próximas Funcionalidades
+
+- [ ] Sistema de notificaciones por email
+- [ ] Generación de PDFs para citas y prescripciones
+- [ ] Calendario visual interactivo
+- [ ] Chat en tiempo real doctor-paciente
+- [ ] Historial médico detallado con archivos adjuntos
+- [ ] Sistema de recordatorios automáticos
+
+## 👨‍💻 Desarrollo
+
+### Backend
+```bash
+# Ejecutar migraciones frescas
+php artisan migrate:fresh
+
+# Con seeders
+php artisan migrate:fresh --seed
+
+# Crear controlador
+php artisan make:controller NombreController --api
+
+# Crear modelo con migración
+php artisan make:model Nombre -m
+```
+
+### Frontend
+```bash
+# Build para producción
+npm run build
+
+# Preview de producción
+npm run preview
+
+# Linting
+npm run lint
+```
+
+## 📄 Licencia
+
+Este proyecto es parte del curso de desarrollo web y está destinado para fines educativos.
+
+## 🤝 Contribuciones
+
+Desarrollado por el equipo de Nurgo Health.
+
+---
+
+**Estado**: ✅ Backend completamente funcional | ✅ Frontend con autenticación y dashboards implementados
+
+**Última actualización**: 21 de Noviembre de 2025

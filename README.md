@@ -1,65 +1,194 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Aplicativo Web de Salud
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 📌 Descripción del Proyecto
 
-## About Laravel
+Este proyecto consiste en el desarrollo de un **sitio web de salud** con operaciones completas **CRUD**, manejo avanzado de **roles**, protección de rutas mediante **middleware**, y un sistema de autenticación que incluye **inicio de sesión y registro**. La interfaz estará construida con un diseño moderno, interactivo, con animaciones suaves y colores acordes a la identidad del aplicativo.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### 👥 Roles del Sistema
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+El sistema contará con los siguientes roles iniciales:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+* **Administrador**
+* **Acudiente**
+* **Paciente**
+* **Doctor**
 
-## Learning Laravel
+### 🧩 Reglas y Relaciones
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+* Cada **Paciente** debe tener un **Acudiente**, quien debe ser:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+  * Obligatoriamente mayor de edad.
+  * Tener un parentesco válido con el paciente.
+* Cada **Paciente** debe tener asignado un **Doctor**.
+* Cada **Doctor** puede tener múltiples pacientes asociados.
 
-## Laravel Sponsors
+### 🩺 Funcionalidades Principales
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+#### Para Doctores
 
-### Premium Partners
+* Asignar **citas médicas**.
+* Asignar **visitas domiciliarias** a los pacientes.
+* **Recetar medicamentos**.
+* Notificación automática al paciente y acudiente (y opcionalmente vía correo con PDF) al asignar una cita o visita.
+* Validación de citas:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+  * No se pueden programar citas en fechas pasadas.
+  * No se permiten dos o más citas simultáneas con el mismo doctor.
 
-## Contributing
+#### Para Acudientes y Pacientes
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+* Agendar citas médicas.
+* Los acudientes tienen un botón especial de **“Emergencia”**, que enviará notificación por correo al doctor indicando que el paciente requiere atención inmediata.
 
-## Code of Conduct
+#### Para Todos los Roles Relacionados
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+* Visualización clara, ordenada y atractiva de todas las citas asignadas.
 
-## Security Vulnerabilities
+### 🏠 Página de Inicio
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+El sitio contará con una página de bienvenida que muestra:
 
-## License
+* Información de la empresa.
+* Razón social.
+* Servicios ofrecidos.
+* Opiniones de clientes.
+* Otros elementos informativos.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# Nurgo_byCoding
+---
+
+## 🏛️ Arquitectura de la Aplicación
+
+La aplicación utilizará una arquitectura basada en **microservicios**, dividiendo responsabilidades entre backend y frontend.
+
+### 🔧 Backend
+
+* Framework: **Laravel 8**
+* Lenguaje: **PHP 8**
+* Herramientas:
+
+  * Composer (gestión de dependencias, creación de controladores, modelos, etc.)
+  * Eloquent ORM para operaciones CRUD y consultas.
+
+### 🎨 Frontend
+
+* Framework: **React** con **Vite**
+* Lenguajes: **HTML**, **CSS** (con TailwindCSS), **JavaScript**
+* Estilos personalizados con animaciones suaves mediante librerías JS.
+
+### 🗄️ Base de Datos
+
+* Servidor local: **Laragon**
+* DBMS: **HeidiSQL** (MySQL/MariaDB)
+* Gestión de:
+
+  * Usuarios
+  * Administradores
+  * Doctores
+  * Acudientes
+  * Pacientes
+  * Citas
+  * Medicamentos
+  * Entre otros
+
+### 🧱 Patrón de Diseño
+
+* Se utilizará el patrón **MVC (Modelo - Vista - Controlador)** para mantener el proyecto ordenado y escalable.
+
+---
+
+## 💻 Tecnologías Utilizadas
+
+### Backend
+
+* PHP 8
+* Laravel 8
+* Composer
+* Eloquent ORM
+
+### Frontend
+
+* React Vite
+* HTML5
+* TailwindCSS
+* JavaScript
+
+### Base de Datos
+
+* MySQL/MariaDB (HeidiSQL vía Laragon)
+
+---
+
+## 📁 Estructura de Carpetas
+
+El proyecto usará las estructuras estándar provistas por cada framework:
+
+### Laravel (Backend)
+
+* **app/** – Modelos, controladores y lógica principal.
+* **routes/** – Rutas web y API.
+* **database/** – Migraciones, seeds y factories.
+* **resources/views/** – Plantillas Blade (si aplica).
+* **public/** – Archivos accesibles públicamente.
+
+### React (Frontend)
+
+* **src/**
+
+  * **components/** – Componentes reutilizables.
+  * **pages/** – Páginas del sitio.
+  * **styles/** – Estilos globales.
+  * **hooks/** – Hooks personalizados.
+  * **services/** – Consumo de APIs.
+
+---
+
+## 🚀 Instalación y Ejecución
+
+### Requisitos
+
+* PHP >= 8.0
+* Composer
+* Node.js y npm
+* Laragon (o equivalente)
+
+### Backend
+
+```bash
+cd backend
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate --seed
+php artisan serve
+```
+
+### Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+---
+
+## 📬 Notificaciones y Correo
+
+* El sistema enviará correos electrónicos para:
+
+  * Confirmación de citas.
+  * Visitas domiciliarias.
+  * Notificación de emergencias.
+* Se planea generar **PDFs** para citas importantes.
+
+---
+
+## 🧪 Estado del Proyecto
+
+Aplicativo en fase inicial de diseño y estructuración.
+
+---
+
+## 📝 Licencia
+
+Proyecto para fines académicos o de prueba.
